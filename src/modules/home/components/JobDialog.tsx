@@ -52,11 +52,13 @@ export function JobDialog({ job, onClose, onApply, hideApply = false }: JobDialo
       bare
       onClose={onClose}
       title={job ? `${tx(job.title)}, job details` : 'Job details'}
-      className="m-auto flex max-h-[85vh] w-[min(640px,calc(100%-32px))] flex-col rounded-3xl bg-surface p-0 text-ink shadow-dialog backdrop:bg-ink/35 open:animate-dlg-in motion-reduce:animate-none"
+      // Keep flex off the native <dialog> — Safari often collapses flex-1 body
+      // content there. The inner panel owns layout, scroll, and chrome.
+      className="m-auto max-h-[85vh] w-[min(640px,calc(100%-32px))] border-0 bg-transparent p-0 shadow-none backdrop:bg-ink/35 open:animate-dlg-in motion-reduce:animate-none"
     >
       {job && (
-        <>
-          <div className="min-h-0 flex-1 overflow-y-auto p-[22px]">
+        <div className="flex max-h-[85vh] flex-col overflow-hidden rounded-3xl bg-surface text-ink shadow-dialog">
+          <div className="overflow-y-auto overscroll-contain p-[22px]">
             <div className="flex items-start justify-between gap-3">
               <p className={kicker}>{tx(job.place)}</p>
               <button
@@ -236,7 +238,7 @@ export function JobDialog({ job, onClose, onApply, hideApply = false }: JobDialo
               {tx('Close')}
             </button>
           </div>
-        </>
+        </div>
       )}
     </Dialog>
   );
