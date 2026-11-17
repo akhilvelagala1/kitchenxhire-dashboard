@@ -1,0 +1,38 @@
+{
+  "$schema": "../../../scripts/guards/page-contract.schema.json",
+  "module": "categories",
+  "entity": "Category",
+  "owner": "@leela1911",
+  "reference": "Prototype admin.html → Catalogue → Categories (admin.html:847). Super-admin superset: docs/audit/PROTOTYPE_GAP_REPORT.md §3.",
+  "roles": ["PLATFORM_ADMIN"],
+  "permissions": {
+    "view": "catalog.categories.view",
+    "create": "catalog.categories.create",
+    "update": "catalog.categories.update",
+    "delete": "catalog.categories.delete",
+    "import": "catalog.categories.import",
+    "export": "catalog.categories.export"
+  },
+  "capabilities": {
+    "search": true,
+    "filters": true,
+    "dateRange": true,
+    "sort": true,
+    "pagination": true,
+    "detail": true,
+    "create": true,
+    "edit": true,
+    "softDelete": true,
+    "restore": true,
+    "bulkActions": true,
+    "bulkImport": true,
+    "bulkExport": true,
+    "auditTrail": true,
+    "asyncSelects": true,
+    "treeView": {
+      "waived": "Tree view with drag reorder and re-parent needs the backend /catalog/categories/tree endpoint. The flat list ships first.",
+      "ticket": "KX-TBD",
+      "until": "2027-01-31"
+    }
+  }
+}

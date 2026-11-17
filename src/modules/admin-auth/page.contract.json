@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../scripts/guards/page-contract.schema.json",
+  "module": "admin-auth",
+  "entity": null,
+  "owner": "@leela1911",
+  "reference": "Platform Admin login reference (email/password, warm canvas).",
+  "roles": ["PLATFORM_ADMIN"],
+  "permissions": {},
+  "capabilities": {
+    "search": {
+      "waived": "Public staff sign-in page only.",
+      "until": "permanent"
+    },
+    "filters": {
+      "waived": "Public staff sign-in page only.",
+      "until": "permanent"
+    },
+    "dateRange": {
+      "waived": "Public staff sign-in page only.",
+      "until": "permanent"
+    },
+    "sort": {
+      "waived": "Public staff sign-in page only.",
+      "until": "permanent"
+    },
+    "pagination": {
+      "waived": "Public staff sign-in page only.",
+      "until": "permanent"
+    },
+    "detail": {
+      "waived": "Public staff sign-in page only.",
+      "until": "permanent"
+    },
+    "create": {
+      "waived": "Public staff sign-in page only.",
+      "until": "permanent"
+    },
+    "edit": {
+      "waived": "Public staff sign-in page only.",
+      "until": "permanent"
+    },
+    "softDelete": {
+      "waived": "Public staff sign-in page only.",
+      "until": "permanent"
+    },
+    "restore": {
+      "waived": "Public staff sign-in page only.",
+      "until": "permanent"
+    },
+    "bulkActions": {
+      "waived": "Public staff sign-in page only.",
+      "until": "permanent"
+    },
+    "bulkImport": {
+      "waived": "Public staff sign-in page only.",
+      "until": "permanent"
+    },
+    "bulkExport": {
+      "waived": "Public staff sign-in page only.",
+      "until": "permanent"
+    },
+    "auditTrail": {
+      "waived": "Public staff sign-in page only.",
+      "until": "permanent"
+    },
+    "asyncSelects": {
+      "waived": "Public staff sign-in page only.",
+      "until": "permanent"
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "module": "home",
+  "entity": null,
+  "owner": "@SuryaVirata",
+  "reference": "kitchenxHire-prototype/index.html (public homepage; Nov 2026 hero redesign target screenshots), job seeker post-OTP Complete Your Profile overlay on /user (2 screens: form + success over blurred Find Jobs; client validation: full name letters/spaces min 2, required category+city, optional area/experience, verified mobile read-only), Find Jobs at /user (results card + expanded filters; FIND_JOBS_PAGE_SIZE=10; bookmark save via useSavedJobs localStorage), My Applications at /user/applications (status pills + Saved Jobs tab; APPLICATIONS_PAGE_SIZE=6; ApplicationListCard identity = flex icon+text group with JobCategoryIconBox size=sm so logo cannot overflow into title; list + Showing/FindJobsPagination footer inside one Find Jobs–style results card; demo seed 13 apps; rendered inside UserProfileLayout so the 280px profile sidebar persists and only the right column changes — full-width content, no right benefits card), UserSiteHeader matches SiteHeader brand+nav spacing (KITCHENX|Hiring then ml-6/ml-28 gap; Hiring not a duplicate nav link), My Profile wizard at /user/profile (Basic Details Other in-place; Skills & Experience: peach step banner, Primary Skills multi-select search+chips max 10, Current Role dropdown+Other in-place, optional Last Employer icon field, tip strip, required validation; mobile Edit→OTP; saved summary + Edit Profile), My Resume builder + preview at /user/resume, Account Settings at /user/settings (job seeker blueprint, Nov 2026), My Documents at /user/documents (job seeker blueprint, Nov 2026), recruiter home at /recruiter, organization setup at /recruiter/organization, post-job gate at /recruiter/post-job, recruiter Applications dashboard at /recruiter/applications (1671×941 reference, Nov 2026), recruiter post-OTP Complete Your Recruiter Profile overlay at /recruiter (two-panel modal: peach illustration panel + recruiter fields; verified mobile read-only; saves the profile to kx-hire-recruiter-profile-v1 and seeds the organisation draft with business name/type/city; not shown again once complete); account settings (personal/organisation/security/notifications) at /recruiter/account-settings. Post a Job at /recruiter/post-job now uses a required compact Job Description instead of the Resume upload and validates every field inline (title, salary, openings, ages, description and location).",
+  "roles": [],
+  "permissions": {},
+  "capabilities": {
+    "search": {
+      "waived": "A public marketing page, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "filters": {
+      "waived": "A public marketing page, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "dateRange": {
+      "waived": "A public marketing page, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "sort": {
+      "waived": "A public marketing page, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "pagination": {
+      "waived": "A public marketing page, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "detail": {
+      "waived": "A public marketing page, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "create": {
+      "waived": "A public marketing page, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "edit": {
+      "waived": "A public marketing page, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "softDelete": {
+      "waived": "A public marketing page, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "restore": {
+      "waived": "A public marketing page, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "bulkActions": {
+      "waived": "A public marketing page, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "bulkImport": {
+      "waived": "A public marketing page, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "bulkExport": {
+      "waived": "A public marketing page, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "auditTrail": {
+      "waived": "A public marketing page, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "asyncSelects": {
+      "waived": "A public marketing page, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    }
+  }
+}

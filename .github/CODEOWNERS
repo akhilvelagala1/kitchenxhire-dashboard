@@ -1,0 +1,11 @@
+# Auto-request architect review on every pull request.
+* @kyedumati
+
+# Guardrails: a change here changes what every developer and agent is held to.
+/.claude/ @kyedumati
+/.cursor/ @kyedumati
+/AGENTS.md @kyedumati
+/scripts/guards/ @kyedumati
+/eslint.config.js @kyedumati
+/knip.json @kyedumati
+**/page.contract.json @kyedumati

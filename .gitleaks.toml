@@ -1,0 +1,10 @@
+# Prototype localStorage namespace strings (not secrets); gitleaks generic-api-key false positives.
+title = "kitchenxhire-dashboard gitleaks allowlist"
+
+[allowlist]
+paths = [
+  '''src/modules/home/lib/recruiterApplicationsStore.ts''',
+  '''src/modules/home/lib/recruiterOrganisationStorage.ts''',
+  '''src/modules/home/lib/recruiterPostedJobsStore.ts''',
+  '''src/modules/home/lib/recruiterSession.ts''',
+]

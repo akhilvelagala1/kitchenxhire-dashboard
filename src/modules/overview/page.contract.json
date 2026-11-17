@@ -1,0 +1,74 @@
+{
+  "$schema": "../../../scripts/guards/page-contract.schema.json",
+  "module": "overview",
+  "entity": null,
+  "owner": "@leela1911",
+  "reference": "Prototype admin.html → Dashboard (admin.html:453).",
+  "roles": ["PLATFORM_ADMIN", "FINANCE_ADMIN", "TECHNICAL_ADMIN", "RELATIONSHIP_MANAGER"],
+  "permissions": {
+    "view": "overview.view"
+  },
+  "capabilities": {
+    "search": {
+      "waived": "A dashboard view, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "filters": {
+      "waived": "A dashboard view, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "dateRange": {
+      "waived": "Date range applies to KPI widgets, which wait on the reporting API.",
+      "ticket": "KX-TBD",
+      "until": "2027-01-31"
+    },
+    "sort": {
+      "waived": "A dashboard view, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "pagination": {
+      "waived": "A dashboard view, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "detail": {
+      "waived": "A dashboard view, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "create": {
+      "waived": "A dashboard view, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "edit": {
+      "waived": "A dashboard view, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "softDelete": {
+      "waived": "A dashboard view, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "restore": {
+      "waived": "A dashboard view, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "bulkActions": {
+      "waived": "A dashboard view, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "bulkImport": {
+      "waived": "A dashboard view, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "bulkExport": {
+      "waived": "A dashboard view, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "auditTrail": {
+      "waived": "A dashboard view, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    },
+    "asyncSelects": {
+      "waived": "A dashboard view, not an entity. There are no records to search, edit, archive, import or export.",
+      "until": "permanent"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.git
+.github
+.husky
+.claude
+.cursor
+docs
+node_modules
+dist
+coverage
+.env
+.env.*
+!.env.example

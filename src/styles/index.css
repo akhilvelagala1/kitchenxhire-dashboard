@@ -1,0 +1,507 @@
+@import 'tailwindcss';
+
+/* Design tokens (UI-01). Same KitchenXHire brand as kitchenxhire-app theme.ts and admin.html.
+   Components use these names, never raw hex. Brand type is configured once in fonts.css:
+   Gabriel Sans and Degular replace Inter when the licensed files are added.
+   Do not ship the trial fonts from the PDF. */
+@theme {
+  --color-brand-25: #fff7f3;
+  --color-brand-50: #fff1ec;
+  --color-brand-200: #ffd8c8;
+  --color-brand-600: #ff4f18;
+  --color-brand-700: #e64514;
+  --color-success-50: #ecf8f1;
+  --color-success-700: #1b9e4b;
+  --color-warning-50: #fffbeb;
+  --color-warning-700: #b45309;
+  --color-danger-50: #fef3f2;
+  --color-danger-600: #d92d20;
+  --color-danger-700: #b42318;
+  --color-disabled: #e8eaee;
+  --color-disabled-ink: #98a2b3;
+  --color-ink: #141517;
+  --color-ink-soft: #6b7280;
+  --color-ink-400: #98a2b3;
+  --color-ink-500: #667085;
+  --color-ink-600: #475467;
+  --color-ink-650: #3e4654;
+  --color-ink-700: #344054;
+  --color-line: #e4e6eb;
+  --color-line-header: #e8ecf1;
+  --color-line-soft: #eef0f3;
+  --color-line-strong: #d0d5dd;
+  --color-muted: #f2f4f7;
+  --color-surface: #ffffff;
+  --color-canvas: #f7f8fa;
+  --font-sans: KitchenX, Inter, ui-sans-serif, system-ui, sans-serif;
+  --radius-xl: 12px;
+
+  /* Public homepage (kitchenxHire-prototype). Inter Tight, as the prototype renders it. */
+  --font-hire: KitchenXHire, 'Inter Tight', ui-sans-serif, system-ui, sans-serif;
+  --font-hire-body: KitchenXHireBody, 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
+
+  /* Dense dashboard text. Inside a .fit-scale page these are redefined below so they grow with the screen. */
+  --text-dense-2xs: 9px;
+  --text-dense-xs: 10px;
+  --text-dense-sm: 11px;
+  --text-dense-md: 13px;
+  --text-dense-lg: 15px;
+  --text-dense-title: 30px;
+
+  --shadow-btn-orange: 0 8px 16px rgb(255 79 24 / 0.2);
+  --shadow-btn-orange-hover: 0 10px 20px rgb(255 79 24 / 0.28);
+  --shadow-btn-orange-slim: 0 6px 14px rgb(255 79 24 / 0.16);
+  --shadow-btn-white: 0 6px 14px rgb(20 21 23 / 0.05);
+  --shadow-card: 0 8px 20px rgb(20 21 23 / 0.05);
+  --shadow-card-hover: 0 14px 28px rgb(20 21 23 / 0.1);
+  --shadow-panel: 0 10px 30px rgb(20 21 23 / 0.06);
+  --shadow-search: 0 8px 24px rgb(20 21 23 / 0.08);
+  --shadow-search-wide: 0 8px 28px rgb(20 21 23 / 0.06);
+  --shadow-search-focus: 0 10px 28px rgb(20 21 23 / 0.1);
+  --shadow-role: 0 6px 16px rgb(20 21 23 / 0.05);
+  --shadow-role-on: 0 0 0 1px var(--color-brand-200), 0 8px 18px rgb(20 21 23 / 0.06);
+  --shadow-role-link-hover: 0 10px 20px rgb(255 79 24 / 0.08);
+  --shadow-step: 0 10px 24px rgb(20 21 23 / 0.1);
+  --shadow-step-hover: 0 16px 32px rgb(20 21 23 / 0.18);
+  --shadow-value: 0 8px 24px rgb(20 21 23 / 0.05);
+  --shadow-value-hover: 0 16px 32px rgb(255 79 24 / 0.12);
+  --shadow-impact: 0 8px 22px rgb(20 21 23 / 0.05);
+  --shadow-impact-front: 0 10px 20px rgb(255 79 24 / 0.14);
+  --shadow-impact-hover: 0 16px 30px rgb(255 79 24 / 0.12);
+  --shadow-impact-front-hover: 0 14px 26px rgb(255 79 24 / 0.2);
+  --shadow-dialog: 0 24px 60px rgb(20 21 23 / 0.2);
+  --shadow-auth: 0 24px 60px rgb(20 21 23 / 0.14);
+  --shadow-auth-btn: 0 8px 18px rgb(255 79 24 / 0.24);
+  --shadow-loc: 0 16px 40px rgb(20 21 23 / 0.12);
+  --shadow-focus-ring: 0 0 0 4px rgb(255 79 24 / 0.12);
+
+  --animate-rise-in: rise-in 0.55s ease both;
+  --animate-hero-in: hero-in 0.7s ease both;
+  --animate-panel-in: panel-in 0.28s ease;
+  --animate-menu-in: menu-in 0.22s ease;
+  --animate-dlg-in: dlg-in 0.22s ease;
+  --animate-impact-rise: impact-rise 0.75s ease both;
+  --animate-impact-float: impact-float 5.6s ease-in-out infinite;
+
+  @keyframes rise-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes hero-in {
+    from {
+      opacity: 0;
+      transform: scale(1.04);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes panel-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes menu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes dlg-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes impact-rise {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes impact-float {
+    0%,
+    100% {
+      translate: 0 0;
+    }
+    50% {
+      translate: 0 -7px;
+    }
+  }
+  @keyframes eyebrow-shine {
+    0% {
+      background-position: 120% 50%;
+    }
+    48% {
+      background-position: -20% 50%;
+    }
+    48.01%,
+    100% {
+      background-position: 120% 50%;
+    }
+  }
+  @keyframes how-flow {
+    to {
+      background-position: 20px 0;
+    }
+  }
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+}
+
+/* Public homepage effects that plain utilities cannot express. */
+@utility bg-hero {
+  background:
+    radial-gradient(520px 280px at 78% 42%, rgb(255 236 228 / 0.55), transparent 70%),
+    linear-gradient(
+      180deg,
+      var(--color-surface) 0%,
+      var(--color-surface) 72%,
+      var(--color-muted) 100%
+    );
+}
+
+@utility bg-closer {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface) 0%,
+    var(--color-brand-25) 42%,
+    var(--color-brand-50) 100%
+  );
+}
+
+@utility eyebrow-shine {
+  width: fit-content;
+  max-width: 100%;
+  background-image: linear-gradient(
+    105deg,
+    var(--color-brand-600) 0 46%,
+    var(--color-brand-200) 50%,
+    var(--color-brand-600) 54% 100%
+  );
+  background-size: 280% 100%;
+  background-position: 120% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: eyebrow-shine 5s ease-in-out infinite;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    background-image: none;
+    -webkit-text-fill-color: var(--color-brand-600);
+  }
+}
+
+@utility fade-left-hero {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgb(0 0 0 / 0.3) 7%, #000 18%);
+  mask-image: linear-gradient(90deg, transparent 0%, rgb(0 0 0 / 0.3) 7%, #000 18%);
+}
+
+@utility fade-left-closer {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%);
+  mask-image: linear-gradient(90deg, transparent, #000 18%);
+}
+
+@utility steps-rail {
+  @media (min-width: 768px) {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 64px;
+      left: 12%;
+      right: 12%;
+      height: 2px;
+      z-index: 0;
+      pointer-events: none;
+      background-image: repeating-linear-gradient(
+        90deg,
+        rgb(255 79 24 / 0.55) 0 10px,
+        transparent 10px 20px
+      );
+      background-size: 20px 2px;
+      animation: how-flow 1.4s linear infinite;
+    }
+  }
+  @media (min-width: 1024px) {
+    &::before {
+      top: 78px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &::before {
+      animation: none;
+    }
+  }
+}
+
+@utility step-connector-mobile {
+  position: absolute;
+  top: 66px;
+  left: 50%;
+  width: calc(100% + 1rem);
+  height: 2px;
+  z-index: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgb(255 79 24 / 0.55) 0 10px,
+    transparent 10px 20px
+  );
+  background-size: 20px 2px;
+  animation: how-flow 1.4s linear infinite;
+  @media (min-width: 768px) {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@utility stories-peek-first {
+  @media (min-width: 768px) and (max-width: 1023px) {
+    margin-left: calc((100% - 58%) / 2 - 58% - 16px);
+  }
+}
+
+@layer base {
+  .kx-home {
+    --default-transition-timing-function: ease;
+  }
+
+  :where(.kx-home) :focus-visible {
+    outline: 2px solid var(--color-brand-600);
+    outline-offset: 3px;
+  }
+
+  :where(.kx-home) button {
+    cursor: pointer;
+  }
+
+  :where(.kx-home) button:disabled {
+    cursor: not-allowed;
+  }
+
+  html.kx-smooth {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html.kx-smooth {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* The prototype's type roles (kitchenx-type.css): body copy and form text in the body face, everything else primary. */
+@layer base {
+  :where(.kx-home) :is(p, li, label, td, th, input, textarea, select) {
+    font-family: var(--font-hire-body);
+  }
+
+  :where(.kx-home) :is(h1, h2, h3, h4, h5, h6, button) {
+    font-family: var(--font-hire);
+  }
+}
+
+/* Fit-to-screen scale for a dashboard that fills the window (the Jobs dashboard).
+   --u is one design pixel: exactly 1px in the 1200x675 reference window, growing with the window up to
+   1.5px, and never below 1px (a smaller window scrolls instead of shrinking the text).
+   What the page gets is the window minus the 198px sidebar and the 48px header; the reference gets
+   1002x627, so the scale is the tighter of width and height. Keep 198 and 48 in step with AppShell.
+   Floor and cap are in rem, so a larger browser font setting still counts. No zoom, no transform. */
+@property --u {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 1px;
+}
+
+:root {
+  --u: 0.0625rem;
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --u: clamp(
+      0.0625rem,
+      min(calc((100vw - 198px) * 0.000998), calc((100vh - 48px) * 0.001595)),
+      0.09375rem
+    );
+  }
+}
+
+/* Inside a .fit-scale page the Tailwind spacing, text and radius scales follow --u, so ordinary
+   classes (p-3, text-sm, size-5, rounded-xl) grow with the screen. Dialogs keep their normal size. */
+.fit-scale,
+.fit-scale dialog {
+  --spacing: calc(4 * var(--u));
+  --text-xs: calc(12 * var(--u));
+  --text-sm: calc(14 * var(--u));
+  --text-base: calc(16 * var(--u));
+  --text-lg: calc(18 * var(--u));
+  --text-xl: calc(20 * var(--u));
+  --text-2xl: calc(24 * var(--u));
+  --text-dense-2xs: calc(9 * var(--u));
+  --text-dense-xs: calc(10 * var(--u));
+  --text-dense-sm: calc(11 * var(--u));
+  --text-dense-md: calc(13 * var(--u));
+  --text-dense-lg: calc(15 * var(--u));
+  --text-dense-title: calc(30 * var(--u));
+  --radius-md: calc(6 * var(--u));
+  --radius-lg: calc(8 * var(--u));
+  --radius-xl: calc(12 * var(--u));
+  --radius-2xl: calc(16 * var(--u));
+}
+
+.fit-scale dialog {
+  --u: 0.0625rem;
+}
+
+/* The Applications dashboard has its own reference picture (1561x1007), so it has its own unit.
+   --u is again one design pixel: the page is drawn for 920 design pixels of height and a 1337 wide
+   content area, 1px at about 1561x1007 and 1730x1000. It may shrink to 0.85px so a laptop window
+   still shows the whole page; below that the shell scrolls. The cap is 1.5px, as for Jobs.
+   Put this class next to .fit-scale on the page wrapper; a card reads --u from its own element. */
+/* The Recruiters and Job Seekers dashboards share one reference size (about 1560x1008): the same unit
+   as above, drawn for 950 design pixels of height. Put .fit-scale-lists next to .fit-scale. */
+@media (min-width: 64rem) {
+  .fit-scale-lists {
+    --u: clamp(
+      0.053125rem,
+      min(calc((100vw - 198px) * 0.000748), calc((100vh - 48px) * 0.001053)),
+      0.09375rem
+    );
+  }
+}
+
+/* Reports & Analytics uses the same fixed 1:1 sizing as the list screens, so its cards no longer
+   grow with the window. The design values below are plain pixels. */
+@media (min-width: 64rem) {
+  .fit-scale-reports {
+    --u: 1px;
+  }
+}
+
+/* Post a Job (1561x1008 reference): the page area is drawn 1353 design px wide and 968 tall (the
+   picture's 958 plus a little slack for 1px borders and rounding), so the whole form fits one screen.
+   224px is the real sidebar width and 48px the header (keep in step with AppShell). Put this class
+   next to .fit-scale on the page wrapper. Below lg the cards stack and the shell scrolls. */
+@media (min-width: 64rem) {
+  .fit-scale-post-job {
+    --u: clamp(
+      0.053125rem,
+      min(calc((100vw - 224px) * 0.000739), calc((100vh - 48px) * 0.001033)),
+      0.09375rem
+    );
+  }
+}
+
+/* Drawn for the 1536x960 Settings picture: 856 design px of height, same unit as the lists above. */
+@media (min-width: 64rem) {
+  .fit-scale-settings {
+    --u: clamp(
+      0.053125rem,
+      min(calc((100vw - 198px) * 0.000735), calc((100vh - 48px) * 0.001168)),
+      0.09375rem
+    );
+  }
+}
+
+/* Hiring & Jobs Settings (1536x1024): taller 2x2 cards. Scale against ~950 design px of height so
+   the four cards fit one main without scrolling; put next to .fit-scale on that tab. */
+@media (min-width: 64rem) {
+  .fit-scale-settings-hiring {
+    --u: clamp(
+      0.053125rem,
+      min(calc((100vw - 198px) * 0.000748), calc((100vh - 48px) * 0.001053)),
+      0.09375rem
+    );
+  }
+}
+
+/* Users & Roles Settings (1536x1024): roomier 2x2 (avatars, role tiles, matrix). Scale against
+   ~980 design px of height so the four cards still fit one main without scrolling. */
+@media (min-width: 64rem) {
+  .fit-scale-settings-users {
+    --u: clamp(
+      0.053125rem,
+      min(calc((100vw - 198px) * 0.000748), calc((100vh - 48px) * 0.00102)),
+      0.09375rem
+    );
+  }
+}
+
+/* Notifications Settings (1536x1024): channels, events, template, delivery — one viewport. */
+@media (min-width: 64rem) {
+  .fit-scale-settings-notifications {
+    --u: clamp(
+      0.053125rem,
+      min(calc((100vw - 198px) * 0.000748), calc((100vh - 48px) * 0.00102)),
+      0.09375rem
+    );
+  }
+}
+
+/* Integrations Settings (1152x720 reference, i.e. 1536x960 design at 0.75): two side-by-side
+   cards, ~484 design px tall, on one viewport. */
+@media (min-width: 64rem) {
+  .fit-scale-settings-integrations {
+    --u: clamp(
+      0.053125rem,
+      min(calc((100vw - 198px) * 0.000735), calc((100vh - 48px) * 0.001168)),
+      0.09375rem
+    );
+  }
+}
+
+/* Security Settings (1536x1024 reference): two side-by-side cards, each at least ~475 design px
+   tall, on one viewport. */
+@media (min-width: 64rem) {
+  .fit-scale-settings-security {
+    --u: clamp(
+      0.053125rem,
+      min(calc((100vw - 198px) * 0.000748), calc((100vh - 48px) * 0.00102)),
+      0.09375rem
+    );
+  }
+}
+
+/* Audit & Logs Settings (1536x1024 reference): one full-width card (filters + table + pagination)
+   on one viewport. Same reference size as Security, so the same clamp. */
+@media (min-width: 64rem) {
+  .fit-scale-settings-audit {
+    --u: clamp(
+      0.053125rem,
+      min(calc((100vw - 198px) * 0.000748), calc((100vh - 48px) * 0.00102)),
+      0.09375rem
+    );
+  }
+}

@@ -1,0 +1,25 @@
+name: Stale pull requests
+
+on:
+  schedule:
+    - cron: '30 3 * * 1'
+  workflow_dispatch:
+
+permissions:
+  pull-requests: write
+  issues: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      # A branch nobody touches for weeks drifts from develop and gets merged half-understood.
+      - uses: actions/stale@v9
+        with:
+          days-before-pr-stale: 14
+          days-before-pr-close: 7
+          stale-pr-label: stale
+          stale-pr-message: 'No activity for 14 days. Rebase on develop and push, or close it. It closes in 7 days otherwise.'
+          days-before-issue-stale: -1
+          days-before-issue-close: -1
+          exempt-pr-labels: pinned,blocked
