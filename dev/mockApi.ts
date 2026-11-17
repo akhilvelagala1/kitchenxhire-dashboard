@@ -356,6 +356,14 @@ async function startHireImportJob(res: ServerResponse, req: IncomingMessage, dry
   ok(res, jobView(job));
 }
 
+/** Shared by the Vite serve plugin and the GitHub Pages browser mock adapter. */
+export async function handleMockApiRequest(
+  req: IncomingMessage,
+  res: ServerResponse
+): Promise<boolean> {
+  return handle(req, res);
+}
+
 async function handle(req: IncomingMessage, res: ServerResponse): Promise<boolean> {
   const url = new URL(req.url ?? '/', 'http://localhost');
   const path = url.pathname.replace(/^\/api\/v1/, '');

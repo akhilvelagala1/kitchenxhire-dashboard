@@ -14,6 +14,12 @@ const http = axios.create({
   timeout: 15_000
 });
 
+if (import.meta.env.VITE_BROWSER_MOCK === 'true') {
+  // Vite statically replaces the flag; the mock chunk is only built for Pages.
+  const { installBrowserMock } = await import('./installBrowserMock');
+  installBrowserMock(http);
+}
+
 http.interceptors.request.use((config) => {
   const token = getAccessToken();
   if (token) config.headers.set('Authorization', `Bearer ${token}`);

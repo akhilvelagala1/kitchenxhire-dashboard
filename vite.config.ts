@@ -1,5 +1,5 @@
 import path from 'node:path';
-import { loadEnv } from 'vite';
+import { loadEnv, type Plugin } from 'vite';
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
@@ -11,18 +11,48 @@ function useDevMockApi(mode: string, apiBase: string): boolean {
   return apiBase.startsWith('/') && !apiBase.startsWith('//');
 }
 
+/** Lets the Pages build import mock handlers without putting `dev/` in tsconfig.app. */
+function browserMockVirtual(): Plugin {
+  return {
+    name: 'kitchenxhire-browser-mock-virtual',
+    resolveId(id) {
+      if (id === 'virtual:browser-mock') return id;
+      return undefined;
+    },
+    load(id) {
+      if (id !== 'virtual:browser-mock') return undefined;
+      return `export { handleMockApiRequest } from ${JSON.stringify(
+        path.resolve(import.meta.dirname, './dev/mockApi.ts')
+      )};`;
+    }
+  };
+}
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   const apiBase = env.VITE_API_BASE_URL ?? '';
   const mockApiEnabled = useDevMockApi(mode, apiBase);
+  const browserMock = env.VITE_BROWSER_MOCK === 'true';
 
   return {
     base: '/kitchenxhire-dashboard/',
-    plugins: [react(), tailwindcss(), ...(mockApiEnabled ? [mockApi()] : [])],
+    plugins: [
+      react(),
+      tailwindcss(),
+      ...(browserMock ? [browserMockVirtual()] : []),
+      ...(mockApiEnabled ? [mockApi()] : [])
+    ],
     resolve: {
       alias: {
-        '@': path.resolve(import.meta.dirname, './src')
+        '@': path.resolve(import.meta.dirname, './src'),
+        buffer: 'buffer/'
       }
+    },
+    define: {
+      global: 'globalThis'
+    },
+    optimizeDeps: {
+      include: ['buffer']
     },
     server: {
       host: 'localhost',
